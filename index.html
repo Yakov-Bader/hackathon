@@ -1,48 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Modal</title>
-    <link href="styles.css" rel="stylesheet">
-    <script defer src="script.js"></script>
-</head>
-
-<body>
-    <button data-modal-target="#modal">Open Modal</button>
-    <div class="modal" id="modal">
-        <div class="modal-header">
-            <div class="title">Example Modal</div>
-            <button data-close-button class="close-button">&times;</button>
-        </div>
-        <div class="modal-body">
-            <form id="kaki" action="/withUser.js" method="POST">
-
-                </br>
-                <div id="sheten">תאריך פרסום</div>
-                <input type="date" name="date">
-                </br>
-                <div id="parshedona">הנושא</div>
-                <input type="text" name="about">
-                </br>
-                <div id="flotz">שם תלמיד</div>
-                <input type="text" name="publisher">
-                </br>
-                </br>
-                <label for="pipi" class="custom-file-upload">
-                    <i class="fa fa-cloud-upload"></i> Upload File
-                </label>
-                <input id="pipi" type="file"/>
-                </br>
-                </br>
-                <input type="submit" value="send">
-
-            </form>
-        </div>
-    </div>
-    <div id="overlay"></div>
-</body>
-
+<html>
+    <head>
+        <title>The Name Of The Site</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <script>
+        function createInSubtitle(){
+            var subtitle = document.getElementsByClassName("insubtitle");
+                subtitle.innerHTML ="hi";
+        }
+    </script>
+    <body>
+        
+        <div class="thing">
+            <div>
+                <div class="title">
+                    <h1>a little title</h1>
+                    <button class="button-title" onclick='createInSubtitle();'>+</button>
+                </div>
+                <div class="subtitle">
+                    <div class="insubtitle">
+                        <div class="img">
+                            <img src="fileblue.jpg" alt="" width="50" height="auto">
+                        </div>
+                        <div class="subject">subject</div>
+                        <div class="filename">filename</div>
+                        <div class="date">date</div>
+                </div>   
+            </div>
+            <div class="title-btn">
+                <button class="button-thing">+</button>
+            </div>
+          </div> 
+        
+    </body>
 </html>
