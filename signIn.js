@@ -29,8 +29,8 @@ function verify(){
     fetch('http://capslock-core.herokuapp.com/auth/verification/'+token, requestOptions)
         .then(response => response.json())
         .then(result => {user=result.message.userId
+            console.log(user)
             window.location.href = "berger.html";
-            window.location.replace("berger.html");
         })
         .catch(error => alert('sorry wrong password, try again', error));
 }

@@ -2,17 +2,17 @@
 //response.data.data.server
 // date, about, name, file, send
 
-
-const form = document.getElementById('kaki');
+const form = document.getElementById('fileForm');
 form.addEventListener('submit', getServer);
 
 function posting(server){ 
     let formData = new FormData();
     formData.append("file", form[3].files[0]);
     formData.append("email", 'yakovbader@gmail.com');
+    console.log("the file",form[3].files[0])
     fetch(`https://${server}.gofile.io/uploadFile`,{method:'POST',body: formData})
         .then(response => response.json())
-        .then(data=>postInfo(data.data, server))
+        .then(data => postInfo(data.data, server))
         .catch(error => console.log(error));
 }
 

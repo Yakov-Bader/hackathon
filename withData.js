@@ -15,13 +15,34 @@ function getServer(e) {
         .catch(error => console.log(error));
 }
 function postInfo(data,server){
-    // let allfiles=getUserInfo();
-    let allfiles = [];
-    console.log('data', allfiles)
+    
+    let allfiles={};
 
+    //ttttttttttttttttttttttttt
     var myHeaders = new Headers();
     myHeaders.append("Accept", "application/json");
     myHeaders.append("Content-Type", "application/json");
+
+    var requestOptions = {
+    method: 'GET',
+    headers: myHeaders,
+    redirect: 'follow'
+    };
+
+    fetch("http://capslock-core.herokuapp.com/users/{userId}", requestOptions)
+    .then(response => response.json())
+    .then(result => allfiles.push(result))
+    .catch(error => console.log('error', error));
+
+
+
+
+    //tttttttttttttttttttttttttttttt
+   
+    var myHeaders = new Headers();
+    myHeaders.append("Accept", "application/json");
+    myHeaders.append("Content-Type", "application/json");
+    
     allfiles[data.fileName] = {
         server: server,
         code:data.code,
@@ -31,29 +52,24 @@ function postInfo(data,server){
         subtitle:form[1],
         title:"title"
     }
-    allfiles[data.fileName]
-
     
     var raw = JSON.stringify({
         "userId": user,
         "app": "Banjax",
         "data": allfiles
     });
-
-    console.log(raw)
-
-    let requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: raw,
-        redirect: 'follow'
+    
+    var requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
     };
-
+    
     fetch("http://capslock-core.herokuapp.com/users/data", requestOptions)
-        .then(response => response.json())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
-
+      .then(response => response.json())
+      .then(result => console.log(result))
+      .catch(error => console.log('error', error));
 }
 function getList(){
     fetch(`https://api.gofile.io/getUploadsList?token=${token}`)

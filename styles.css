@@ -69,14 +69,9 @@
     pointer-events: all;
 }
 
-#kaki {
+#fileForm, #fileUpload  {
     text-align: center;
     margin: auto;
-}
-
-#pipi {
-    margin: auto;
-    text-align: center;
 }
 
 #sheten{
