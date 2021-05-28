@@ -1,7 +1,3 @@
-const { info } = require("node:console");
-
-
-
 //https://${server}.gofile.io/download/${code}/${MD5}/${file name}
 let token='b2af86fc3339ea38e577732b73b1b00ceb7a23ecfc69a89ba722b8a4beaf734e'
 let titles=[];
@@ -19,19 +15,20 @@ function getServer(e) {
         .catch(error => console.log(error));
 }
 function postInfo(data,server){
-    console.log(data);
-    console.log(user);
+    // let allfiles=getUserInfo();
+    let allfiles = [];
+    console.log('data', allfiles)
+
     var myHeaders = new Headers();
     myHeaders.append("Accept", "application/json");
     myHeaders.append("Content-Type", "application/json");
-    let allfiles={};
     allfiles[data.fileName] = {
         server: server,
         code:data.code,
         MD5:data.md5,
         date:form[0],
-        name:form[1],
-        subtitle:form[2],
+        name:form[2],
+        subtitle:form[1],
         title:"title"
     }
     allfiles[data.fileName]
@@ -96,4 +93,26 @@ function collect(data){
             }
         } 
     }
+}
+
+function getUserInfo(){
+
+    let ret;
+    var myHeaders = new Headers();
+    var myHeaders = new Headers();
+    myHeaders.append("Accept", "application/json");
+    myHeaders.append("Content-Type", "application/json");
+
+    var requestOptions = {
+    method: 'GET',
+    headers: myHeaders,
+    redirect: 'follow'
+    };
+
+    fetch(`http://capslock-core.herokuapp.com/users/${user}`, requestOptions)
+    .then(response => response.json())
+    .then(result => ret=result.Banjax)
+    .catch(error => console.log('error', error));
+
+    return ret;
 }

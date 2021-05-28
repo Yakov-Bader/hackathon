@@ -1,14 +1,13 @@
 //eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MGFkMjA2ZmM5MGIwZTBmODRlZmJhOWMiLCJhcHBJZCI6IjYwYWQxODAyYzkwYjBlMGY4NGVmYmE4ZCIsImlhdCI6MTYyMjE0NDI3Nn0.Y0OQx-CxLfJWJOkgSeH8s-3Jk5zSKtT6L8jVzZ27fhM
-let user='';
 verifyForm=document.getElementById('conform');
 verifyForm.addEventListener('submit', getVerify);
 
 function getVerify(e){
     e.preventDefault();
-    if(verifyForm[1].value=="sign up"){
+    if(verifyForm[1].value=="sign In"){
         signUp();
-        verifyForm[1].value="Submit";
         verifyForm[0].value="";
+        verifyForm[1].value="Submit";
     }else{
         verify();
     }
@@ -29,8 +28,11 @@ function verify(){
     //.message.userId
     fetch('http://capslock-core.herokuapp.com/auth/verification/'+token, requestOptions)
         .then(response => response.json())
-        .then(result => user=result.message.userId)
-        .catch(error => console.log('error', error));
+        .then(result => {user=result.message.userId
+            window.location.href = "berger.html";
+            window.location.replace("berger.html");
+        })
+        .catch(error => alert('sorry wrong password, try again', error));
 }
 
 function signUp(){

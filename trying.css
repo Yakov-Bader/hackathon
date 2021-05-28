@@ -1,4 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+}
 input{
+    padding: 5px;
     width: 20%;
     height: 30px;
+    margin: 20px;
+    border-radius: 15px;
+}
+form{
+    margin: 250px auto ;
+   
+}
+body{
+    text-align: center;
+    background-image: url("matrixblue.jpg");
+}
+#hhh{
+    position: absolute;
+    margin-top: 200px;
+    
+}
+button{
+    border-radius: 15px;
+}
+a{
+    color: yellow;
 }

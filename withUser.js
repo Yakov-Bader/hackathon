@@ -3,7 +3,7 @@
 // date, about, name, file, send
 
 
-const form = document.getElementById('addFile');
+const form = document.getElementById('kaki');
 form.addEventListener('submit', getServer);
 
 function posting(server){ 

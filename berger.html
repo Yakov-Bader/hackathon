@@ -2,21 +2,46 @@
 <html>
     <head>
         <title>The Name Of The Site</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="berger.css">
+        <link href="styles.css" rel="stylesheet">
+        <script defer src="script.js"></script>
     </head>
-    <script>
-        function createInSubtitle(){
-            var subtitle = document.getElementsByClassName("insubtitle");
-                subtitle.innerHTML ="hi";
-        }
-    </script>
     <body>
-        
+        <div class="modal" id="modal">
+        <div class="modal-header">
+            <div class="title">java</div>
+            <button data-close-button class="close-button">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="kaki" action="/withUser.js" method="POST">
+                </br>
+                <div id="sheten">תאריך פרסום</div>
+                <input type="date" name="date">
+                </br>
+                <div id="parshedona">הנושא</div>
+                <input type="text" name="about">
+                </br>
+                <div id="flotz">שם קובץ</div>
+                <input type="text" name="publisher">
+                </br>
+                </br>
+                <label for="pipi" class="custom-file-upload">
+                    <i class="fa fa-cloud-upload"></i> Upload File
+                </label>
+                <input id="pipi" type="file"/>
+                </br>
+                </br>
+                <input type="submit" value="send">
+
+            </form>
+        </div>
+    </div>
+    <div id="overlay"></div>
         <div class="thing">
-            <div>
+            <div id="father">
                 <div class="title">
-                    <h1>a little title</h1>
-                    <button class="button-title" onclick='createInSubtitle();'>+</button>
+                    <h1>java</h1>
+                    <button class="button-title" data-modal-target="#modal">+</button>
                 </div>
                 <div class="subtitle">
                     <div class="insubtitle">
@@ -26,12 +51,16 @@
                         <div class="subject">subject</div>
                         <div class="filename">filename</div>
                         <div class="date">date</div>
+                    </div>
                 </div>   
             </div>
             <div class="title-btn">
                 <button class="button-thing">+</button>
             </div>
-          </div> 
-        
+        </div> 
+        <script src="withData.js"></script>
+        <script src="withUser.js"></script>
+        <script src="signIn.js"></script>
+        <script src="addHtml.js"></script>   
     </body>
 </html>
