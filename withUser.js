@@ -12,7 +12,10 @@ function posting(server){
     console.log("the file",form[3].files[0])
     fetch(`https://${server}.gofile.io/uploadFile`,{method:'POST',body: formData})
         .then(response => response.json())
-        .then(data => postInfo(data.data, server))
+        .then(data =>{
+            console.log(data.data);
+            postInfo(data.data, server)
+        })
         .catch(error => console.log(error));
 }
 

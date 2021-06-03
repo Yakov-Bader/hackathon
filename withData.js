@@ -14,11 +14,8 @@ function getServer(e) {
         })
         .catch(error => console.log(error));
 }
-function postInfo(data,server){
-    
-    let allfiles={};
 
-    //ttttttttttttttttttttttttt
+function getForLoad(data,server){
     var myHeaders = new Headers();
     myHeaders.append("Accept", "application/json");
     myHeaders.append("Content-Type", "application/json");
@@ -29,28 +26,32 @@ function postInfo(data,server){
     redirect: 'follow'
     };
 
-    fetch("http://capslock-core.herokuapp.com/users/{userId}", requestOptions)
-    .then(response => response.json())
-    .then(result => allfiles.push(result))
-    .catch(error => console.log('error', error));
+    fetch(`http://capslock-core.herokuapp.com/users/${user}`, requestOptions)
+        .then(response => response.json())
+        .then(result => postInfo(data,server,result.Banjax))
+        .catch(error => console.log('error', error));
 
+}
+function postInfo(data,server,){
+    let allfiles={}
+    console.log("data: ",data)
+    const form = document.getElementById('fileForm');
+    let tit = document.getElementById('title');
+    tit=tit.innerHTML;
 
-
-
-    //tttttttttttttttttttttttttttttt
-   
+    //tet this user
     var myHeaders = new Headers();
     myHeaders.append("Accept", "application/json");
     myHeaders.append("Content-Type", "application/json");
     
+    //tttttttttttttttttttttttttttttt
+    //https://${server}.gofile.io/download/${code}/${MD5}/${file name}
     allfiles[data.fileName] = {
-        server: server,
-        code:data.code,
-        MD5:data.md5,
-        date:form[0],
-        name:form[2],
-        subtitle:form[1],
-        title:"title"
+        down:`https://${server}.gofile.io/download/${data.fileId}/${data.fileName}`,
+        date:form[0].value,
+        name:form[2].value,
+        subtitle:form[1].value,
+        title:tit
     }
     
     var raw = JSON.stringify({
@@ -59,17 +60,20 @@ function postInfo(data,server){
         "data": allfiles
     });
     
-    var requestOptions = {
+    let requestOptions = {
       method: 'POST',
       headers: myHeaders,
       body: raw,
       redirect: 'follow'
     };
-    
+
+    //https://${server}.gofile.io/download/${data.fileId}/${data.fileName}
     fetch("http://capslock-core.herokuapp.com/users/data", requestOptions)
       .then(response => response.json())
       .then(result => console.log(result))
       .catch(error => console.log('error', error));
+
+      
 }
 function getList(){
     fetch(`https://api.gofile.io/getUploadsList?token=${token}`)
