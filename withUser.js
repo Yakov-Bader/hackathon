@@ -11,7 +11,7 @@ function posting(server){
     formData.append("email", 'yakovbader@gmail.com');
     console.log("the file",form[3].files[0])
     fetch(`https://${server}.gofile.io/uploadFile`,{method:'POST',body: formData})
-        .then(response => response.json())
+        .then(response => console.log("response",response.json()))
         .then(data =>{
             console.log(data.data);
             postInfo(data.data, server)
