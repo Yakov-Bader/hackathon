@@ -67,7 +67,6 @@ function postInfo(data,server,){
       redirect: 'follow'
     };
 
-    //https://${server}.gofile.io/download/${data.fileId}/${data.fileName}
     fetch("http://capslock-core.herokuapp.com/users/data", requestOptions)
       .then(response => response.json())
       .then(result => console.log(result))

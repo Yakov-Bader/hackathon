@@ -5,4 +5,4 @@ finished;
 const react=require('react');
 let array=[5,5,5,5,5,];
 let father=document.getElementById('list');
-let 
+
